@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfólio profissional de Antônio Gabriel — estudante de Ciência da Computação com foco em dados, bancos de dados e desenvolvimento de software." />
+  <meta name="theme-color" content="#0b1020" />
+  <title>Antônio Gabriel | Portfólio</title>
+  <style>
+    :root {
+      --bg: #080d19;
+      --surface: #101827;
+      --surface-2: #141f31;
+      --text: #edf3ff;
+      --muted: #9aa9bf;
+      --line: rgba(180, 199, 230, .13);
+      --blue: #62a5ff;
+      --cyan: #69e0d0;
+      --max: 1120px;
+      --radius: 20px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 85% 8%, rgba(49, 111, 196, .18), transparent 32rem),
+        radial-gradient(ellipse at 5% 40%, rgba(35, 173, 162, .08), transparent 28rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(8, 13, 25, .78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 800; letter-spacing: -.04em; font-size: 1.1rem; }
+    .brand span { color: var(--blue); }
+    .nav-links { display: flex; align-items: center; gap: 25px; color: var(--muted); font-size: .92rem; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta, .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      border-radius: 999px; padding: 11px 18px; font-weight: 700; font-size: .9rem;
+      border: 1px solid transparent; transition: .2s ease; cursor: pointer;
+    }
+    .nav-cta, .button.primary { background: var(--blue); color: #06101f; }
+    .nav-cta:hover, .button.primary:hover { transform: translateY(-2px); filter: brightness(1.08); }
+    .button.secondary { border-color: var(--line); color: var(--text); background: rgba(255,255,255,.025); }
+    .button.secondary:hover { border-color: rgba(98,165,255,.55); background: rgba(98,165,255,.08); }
+    .hero { padding: 105px 0 86px; display: grid; grid-template-columns: 1.35fr .65fr; align-items: center; gap: 64px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--cyan); font-size: .82rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 25px; height: 1px; background: currentColor; }
+    h1 { font-size: clamp(2.8rem, 6vw, 5.2rem); line-height: 1.02; letter-spacing: -.065em; margin: 20px 0; max-width: 780px; }
+    h1 .accent { color: var(--blue); }
+    .hero-copy { color: var(--muted); font-size: 1.12rem; max-width: 650px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 34px; color: var(--muted); font-size: .88rem; }
+    .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 12px var(--cyan); }
+    .profile-card {
+      position: relative; padding: 28px; border: 1px solid var(--line); border-radius: 28px;
+      background: linear-gradient(145deg, rgba(24,38,60,.92), rgba(12,20,34,.92));
+      box-shadow: 0 25px 80px rgba(0,0,0,.25); overflow: hidden;
+    }
+    .profile-card::before { content: ""; position: absolute; width: 210px; height: 210px; right: -90px; top: -90px; border-radius: 50%; background: rgba(98,165,255,.12); filter: blur(3px); }
+    .avatar {
+      width: 76px; height: 76px; display: grid; place-items: center; border-radius: 22px;
+      background: linear-gradient(135deg, #367bd2, #61d2c5); color: #071222;
+      font-weight: 900; font-size: 1.65rem; letter-spacing: -.06em; margin-bottom: 25px;
+    }
+    .profile-card h2 { font-size: 1.35rem; margin: 0 0 4px; letter-spacing: -.03em; }
+    .profile-card p { color: var(--muted); margin: 0; font-size: .92rem; }
+    .profile-divider { height: 1px; background: var(--line); margin: 23px 0; }
+    .mini-stat { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; font-size: .9rem; }
+    .mini-stat span:first-child { color: var(--muted); }
+    section { padding: 76px 0; border-top: 1px solid var(--line); }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 30px; }
+    .section-kicker { color: var(--cyan); font-size: .78rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    h2.section-title { margin: 7px 0 0; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.055em; line-height: 1.1; }
+    .section-description { color: var(--muted); max-width: 490px; margin: 0; }
+    .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 22px; }
+    .panel { border: 1px solid var(--line); border-radius: var(--radius); padding: 27px; background: rgba(16,24,39,.72); }
+    .panel p { color: var(--muted); margin: 0; }
+    .focus-list { display: grid; gap: 14px; }
+    .focus-item { display: flex; gap: 13px; align-items: flex-start; }
+    .icon-box { flex: 0 0 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; color: var(--cyan); background: rgba(105,224,208,.09); font-weight: 800; }
+    .focus-item strong { display: block; margin-bottom: 2px; }
+    .focus-item small { color: var(--muted); }
+    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .skill-card { border: 1px solid var(--line); background: rgba(16,24,39,.72); border-radius: 17px; padding: 20px; min-height: 145px; }
+    .skill-card .symbol { color: var(--blue); font-size: 1.35rem; font-weight: 900; }
+    .skill-card h3 { font-size: 1rem; margin: 10px 0 4px; }
+    .skill-card p { color: var(--muted); font-size: .85rem; margin: 0; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 17px; }
+    .project { border: 1px solid var(--line); background: linear-gradient(145deg, rgba(20,31,49,.9), rgba(13,21,35,.9)); border-radius: var(--radius); padding: 25px; display: flex; flex-direction: column; min-height: 240px; }
+    .project-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .project-mark { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 13px; background: rgba(98,165,255,.12); color: var(--blue); font-weight: 900; }
+    .tag { border: 1px solid var(--line); color: var(--muted); border-radius: 999px; padding: 5px 10px; font-size: .73rem; }
+    .project h3 { margin: 19px 0 7px; font-size: 1.25rem; letter-spacing: -.03em; }
+    .project p { color: var(--muted); margin: 0 0 18px; font-size: .92rem; }
+    .project .stack { margin-top: auto; color: #b7c9e3; font-size: .78rem; }
+    .timeline { display: grid; gap: 15px; }
+    .timeline-item { display: grid; grid-template-columns: 165px 1fr; gap: 25px; padding: 23px 0; border-bottom: 1px solid var(--line); }
+    .timeline-item:last-child { border-bottom: 0; }
+    .timeline-date { color: var(--cyan); font-size: .82rem; font-weight: 800; }
+    .timeline-item h3 { margin: 0 0 5px; font-size: 1.08rem; }
+    .timeline-item p { margin: 0; color: var(--muted); font-size: .91rem; }
+    .cert-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .cert { display: flex; align-items: center; gap: 14px; border: 1px solid var(--line); background: rgba(16,24,39,.72); border-radius: 15px; padding: 17px; }
+    .cert-icon { width: 38px; height: 38px; flex: 0 0 38px; border-radius: 11px; display: grid; place-items: center; background: rgba(105,224,208,.09); color: var(--cyan); font-weight: 900; }
+    .cert strong { display: block; font-size: .9rem; }
+    .cert small { color: var(--muted); }
+    .contact-box { display: flex; justify-content: space-between; align-items: center; gap: 30px; padding: 36px; border-radius: 25px; border: 1px solid rgba(98,165,255,.25); background: linear-gradient(115deg, rgba(41,94,157,.2), rgba(16,24,39,.8)); }
+    .contact-box h2 { margin: 0 0 8px; font-size: clamp(1.7rem, 4vw, 2.5rem); letter-spacing: -.05em; }
+    .contact-box p { margin: 0; color: var(--muted); }
+    footer { padding: 28px 0 40px; color: var(--muted); font-size: .82rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 23px; }
+    .social-links { display: flex; gap: 16px; }
+    .social-links a { color: var(--muted); }
+    .social-links a:hover { color: var(--blue); }
+    .note { color: #f2c879 !important; font-size: .78rem !important; margin-top: 12px !important; }
+    .menu-button { display: none; border: 1px solid var(--line); color: var(--text); background: transparent; border-radius: 10px; padding: 8px 11px; }
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; gap: 35px; padding-top: 75px; }
+      .profile-card { max-width: 520px; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+      .section-heading { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 620px) {
+      .container { width: min(100% - 30px, var(--max)); }
+      .nav { min-height: 64px; }
+      .menu-button { display: inline-flex; }
+      .nav-cta { display: none; }
+      .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; padding: 18px 22px 22px; flex-direction: column; align-items: flex-start; background: #0c1422; border-bottom: 1px solid var(--line); }
+      .nav-links.open { display: flex; }
+      .hero { padding: 65px 0; }
+      .project-grid, .cert-grid { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; gap: 6px; }
+      .contact-box { align-items: flex-start; flex-direction: column; padding: 26px; }
+      section { padding: 58px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#inicio">AG<span>.</span></a>
+      <button class="menu-button" id="menuButton" aria-label="Abrir menu" aria-expanded="false">Menu</button>
+      <nav class="nav-links" id="navLinks" aria-label="Navegação principal">
+        <a href="#sobre">Sobre</a><a href="#habilidades">Habilidades</a><a href="#projetos">Projetos</a><a href="#experiencia">Experiência</a><a href="#contato">Contato</a>
+      </nav>
+      <a class="nav-cta" href="#contato">Vamos conversar ↗</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container hero" id="inicio">
+      <div>
+        <div class="eyebrow">Portfólio profissional</div>
+        <h1>Olá, eu sou<br><span class="accent">Antônio Gabriel.</span></h1>
+        <p class="hero-copy">Estudante de Ciência da Computação, interessado em tecnologia, dados e desenvolvimento de software. Estou construindo minha trajetória profissional com foco em aprender, resolver problemas e transformar ideias em soluções.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#projetos">Conheça meus projetos ↘</a>
+          <a class="button secondary" href="#contato">Entrar em contato</a>
+        </div>
+        <div class="hero-meta">
+          <span><i class="dot"></i> Aberto a oportunidades de estágio</span>
+          <span>⌁ Brasília, Brasil</span>
+        </div>
+      </div>
+      <aside class="profile-card">
+        <div class="avatar">AG</div>
+        <h2>Ciência da Computação</h2>
+        <p>Estudante • Tecnologia e inovação</p>
+        <div class="profile-divider"></div>
+        <div class="mini-stat"><span>Interesse principal</span><strong>Engenharia de Dados</strong></div>
+        <div class="mini-stat"><span>Também estudo</span><strong>Desenvolvimento</strong></div>
+        <div class="mini-stat"><span>Objetivo</span><strong>Estágio em TI</strong></div>
+      </aside>
+    </div>
+
+    <section id="sobre">
+      <div class="container">
+        <div class="section-heading">
+          <div><div class="section-kicker">01 / Sobre mim</div><h2 class="section-title">Tecnologia com curiosidade<br>e propósito.</h2></div>
+          <p class="section-description">Uma apresentação direta sobre minha formação, meus interesses e a maneira como gosto de aprender.</p>
+        </div>
+        <div class="about-grid">
+          <div class="panel">
+            <p>Sou estudante de Ciência da Computação e venho desenvolvendo minha base em programação, banco de dados e análise de informações. Tenho interesse especial em Engenharia de Dados e em como a tecnologia pode organizar informações, apoiar decisões e melhorar processos.</p>
+            <br>
+            <p>Gosto de aprender na prática, explorar novas ferramentas e desenvolver projetos que conectem conhecimentos técnicos a necessidades reais. Busco uma oportunidade de estágio em que eu possa contribuir, aprender com profissionais experientes e evoluir continuamente.</p>
+          </div>
+          <div class="panel focus-list">
+            <div class="focus-item"><div class="icon-box">01</div><div><strong>Dados e bancos de dados</strong><small>Modelagem, SQL, consultas e organização de informações.</small></div></div>
+            <div class="focus-item"><div class="icon-box">02</div><div><strong>Desenvolvimento</strong><small>Lógica, programação orientada a objetos e construção de sistemas.</small></div></div>
+            <div class="focus-item"><div class="icon-box">03</div><div><strong>Aprendizado contínuo</strong><small>Projetos práticos, cursos e evolução técnica constante.</small></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="habilidades">
+      <div class="container">
+        <div class="section-heading">
+          <div><div class="section-kicker">02 / Conhecimentos</div><h2 class="section-title">Habilidades técnicas</h2></div>
+          <p class="section-description">Tecnologias e ferramentas com as quais venho estudando e praticando.</p>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-card"><div class="symbol">⌘</div><h3>Programação</h3><p>Python, C++ e fundamentos de C#.</p></article>
+          <article class="skill-card"><div class="symbol">▤</div><h3>Banco de Dados</h3><p>SQL, PostgreSQL, MySQL e SQL Server.</p></article>
+          <article class="skill-card"><div class="symbol">▥</div><h3>Dados e BI</h3><p>Power BI, Excel e análise de dados.</p></article>
+          <article class="skill-card"><div class="symbol">☁</div><h3>Cloud e ferramentas</h3><p>Fundamentos Azure, Git e GitHub.</p></article>
+        </div>
+        <p class="note">As habilidades representam tecnologias em estudo e prática. Ajuste os níveis conforme sua experiência real antes de enviar o portfólio a recrutadores.</p>
+      </div>
+    </section>
+
+    <section id="projetos">
+      <div class="container">
+        <div class="section-heading">
+          <div><div class="section-kicker">03 / Na prática</div><h2 class="section-title">Projetos e iniciativas</h2></div>
+          <p class="section-description">Ideias e trabalhos que demonstram meus interesses. Os status abaixo diferenciam projetos em desenvolvimento de estudos acadêmicos.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project">
+            <div class="project-top"><div class="project-mark">DB</div><span class="tag">Repositório no GitHub</span></div>
+            <h3>BancoDeDados</h3>
+            <p>Repositório dedicado a estudos e práticas de banco de dados. Uma oportunidade para demonstrar conhecimentos de SQL, estruturação e manipulação de dados — consulte o código e o README para conhecer o escopo completo.</p>
+            <div class="stack">Banco de Dados · SQL</div>
+            <a class="button secondary" href="https://github.com/antonio-gab/BancoDeDados_" target="_blank" rel="noreferrer" style="margin-top:18px; width:max-content">Ver repositório ↗</a>
+          </article>
+          <article class="project">
+            <div class="project-top"><div class="project-mark">VB</div><span class="tag">Repositório no GitHub</span></div>
+            <h3>Vagabot</h3>
+            <p>Bot com a proposta de reunir vagas de emprego disponíveis em diferentes fontes e centralizar as oportunidades em um único lugar.</p>
+            <div class="stack">Flashcards · Aprendizagem · Organização de ideias</div>
+            <a class="button secondary" href="https://github.com/antonio-gab/vagabot" target="_blank" rel="noreferrer" style="margin-top:18px; width:max-content">Ver repositório ↗</a>
+          </article>
+          <article class="project">
+            <div class="project-top"><div class="project-mark">RC</div><span class="tag">Repositório no GitHub</span></div>
+            <h3>Recall</h3>
+            <p>Aplicativo de flashcards pensado para organizar conhecimentos e ajudar o usuário a desenvolver ideias mais rapidamente, estimulando a aprendizagem e a associação de conceitos.</p>
+            <div class="stack">Bot · Centralização de vagas · Oportunidades de emprego</div>
+            <a class="button secondary" href="https://github.com/antonio-gab/recall" target="_blank" rel="noreferrer" style="margin-top:18px; width:max-content">Ver repositório ↗</a>
+          </article>
+        </div>
+        <p class="note">Revise cada repositório e prepare-se para explicar o problema, sua contribuição, as funcionalidades e as tecnologias utilizadas em cada projeto.</p>
+      </div>
+    </section>
+
+    <section id="experiencia">
+      <div class="container">
+        <div class="section-heading">
+          <div><div class="section-kicker">04 / Trajetória</div><h2 class="section-title">Experiência e formação</h2></div>
+          <p class="section-description">Experiências que contribuíram para desenvolver organização, análise e responsabilidade com informações.</p>
+        </div>
+        <div class="panel timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">Experiência profissional</div>
+            <div><h3>Atividades de auditoria e organização de dados</h3><p>Preenchimento e organização de planilhas na área médica, com atenção à consistência dos registros, controle de informações e uso de Excel.</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Experiência profissional</div>
+            <div><h3>Gestão financeira</h3><p>Controle e atualização de planilhas de custos de materiais e mão de obra, organização de informações financeiras e acompanhamento de despesas para apoiar decisões.</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Formação acadêmica</div>
+            <div><h3>Bacharelado em Ciência da Computação</h3><p>Estudante — 2º semestre. Estudos em programação, banco de dados, programação orientada a objetos e engenharia de software.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certificacoes">
+      <div class="container">
+        <div class="section-heading">
+          <div><div class="section-kicker">05 / Aprendizado</div><h2 class="section-title">Certificações</h2></div>
+          <p class="section-description">Cursos e certificações que complementam minha formação acadêmica.</p>
+        </div>
+        <div class="cert-grid">
+          <div class="cert"><div class="cert-icon">AI</div><div><strong>AI-900 — Fundamentos de IA no Azure</strong><small>Microsoft / Fundação Bradesco · Agosto de 2026</small></div></div>
+          <div class="cert"><div class="cert-icon">DB</div><div><strong>Administrando Banco de Dados</strong><small>Fundação Bradesco · Agosto de 2026</small></div></div>
+          <div class="cert"><div class="cert-icon">BI</div><div><strong>Análise de Dados no Power BI</strong><small>Fundação Bradesco · Agosto de 2026</small></div></div>
+          <div class="cert"><div class="cert-icon">XL</div><div><strong>Microsoft Excel 2016 — Básico</strong><small>Fundação Bradesco · Dezembro de 2025</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="container">
+        <div class="contact-box">
+          <div><div class="section-kicker">06 / Contato</div><h2>Vamos construir algo juntos?</h2><p>Estou aberto a conversar sobre oportunidades de estágio, tecnologia e projetos.</p></div>
+          <div class="hero-actions" style="margin:0">
+            <a class="button primary" href="mailto:Antoniopaiva870@gmail.com">Enviar e-mail ↗</a>
+            <a class="button secondary" href="https://www.linkedin.com/in/antoniogabrielvp/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          </div>
+        </div>
+        <p class="note">Antes de publicar: confira seus links e demais informações de contato.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Antônio Gabriel. Desenvolvido com dedicação.</span>
+      <div class="social-links">
+        <a href="https://github.com/antonio-gab" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/antoniogabrielvp/" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const menuButton = document.getElementById('menuButton');
+    const navLinks = document.getElementById('navLinks');
+    menuButton.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
